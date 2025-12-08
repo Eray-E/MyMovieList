@@ -1,8 +1,7 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -10,9 +9,21 @@ import java.util.List;
 @RestController
 public class MovieController {
 
+    @Autowired
+    MovieService service;
+
+    public MovieController(MovieService service) {
+        this.service = service;
+    }
+
     @CrossOrigin
-    @GetMapping("/todos")
+    @GetMapping("/movies")
     public List<Movie> getMovies(){
-        return List.of(new Movie("M1","M2",2025,true));
+        return service.getAll();
+    }
+
+    @PostMapping("/movies")
+    public Movie createMovie(@RequestBody Movie movie) {
+        return service.save(movie);
     }
 }

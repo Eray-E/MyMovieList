@@ -1,10 +1,23 @@
 package com.example.demo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Movie {
-    String title;
-    String genre;
-    int releaseYear;
-    boolean watched;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String title;
+    private String genre;
+    private int releaseYear;
+    private boolean watched;
+
+    public Movie() {}
 
 
     public Movie(String title,  String genre, int releaseYear, boolean watched) {
@@ -36,6 +49,12 @@ public class Movie {
     }
     public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
+    }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 }
 
