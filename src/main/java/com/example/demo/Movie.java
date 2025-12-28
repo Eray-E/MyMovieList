@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Movie {
@@ -15,22 +12,35 @@ public class Movie {
     private String title;
     private String genre;
     private int releaseYear;
-    private boolean watched;
+
+
+    @Enumerated(EnumType.STRING)
+    private MovieStatus status;
+
+    private Integer rating;
 
     public Movie() {}
 
 
-    public Movie(String title,  String genre, int releaseYear, boolean watched) {
+    public Movie(String title,  String genre, int releaseYear, MovieStatus status, Integer rating) {
         this.title = title;
         this.genre = genre;
         this.releaseYear = releaseYear;
-        this.watched = watched;
+        this.status = status;
+        this.rating = rating;
     }
 
-    public boolean isWatched() {
-        return watched;
+    public MovieStatus getStatus() {
+        return status;
     }
-    public void setWatched(boolean watched) {
+    public void setStatus(MovieStatus status) {
+        this.status = status;
+    }
+    public Integer getRating() {
+        return rating;
+    }
+    public void setRating(Integer rating) {
+        this.rating = rating;
     }
     public String getTitle() {
         return title;
