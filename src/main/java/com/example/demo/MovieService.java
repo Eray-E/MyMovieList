@@ -26,6 +26,7 @@ public class MovieService {
         movie.setReleaseYear(updated.getReleaseYear());
         movie.setStatus(updated.getStatus());
         movie.setRating(updated.getRating());
+        movie.setFavorite(updated.getFavorite());
         return repo.save(movie);
     }
 

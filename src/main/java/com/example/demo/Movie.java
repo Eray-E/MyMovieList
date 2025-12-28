@@ -14,6 +14,9 @@ public class Movie {
     private int releaseYear;
 
 
+    @Column(nullable = false)
+    private boolean favorite = false;
+
     @Enumerated(EnumType.STRING)
     private MovieStatus status;
 
@@ -65,6 +68,12 @@ public class Movie {
     }
     public void setId(Long id) {
         this.id = id;
+    }
+    public boolean getFavorite() {
+        return favorite;
+    }
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 }
 
