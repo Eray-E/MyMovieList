@@ -16,6 +16,9 @@ public class MovieService {
         if(movie.getStatus() == null) {
             movie.setStatus(MovieStatus.PLANNED);
         }
+        if (movie.getReleaseYear() < 0) {
+            throw new IllegalArgumentException("Release year cannot be negative");
+        }
         return repo.save(movie);
     }
 
