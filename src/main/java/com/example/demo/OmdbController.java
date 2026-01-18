@@ -3,9 +3,10 @@ package com.example.demo;
 
 import org.springframework.web.bind.annotation.*;
 
+
+@CrossOrigin(origins= "*")
 @RestController
 @RequestMapping("/api/omdb")
-@CrossOrigin
 public class OmdbController {
 
     private final OmdbService omdbService;
